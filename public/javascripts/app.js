@@ -19,6 +19,7 @@ xhr.addEventListener('load', function(){
   xhr2.open('get', 'http://api.openweathermap.org/data/2.5/weather?lat='+result.latitude+'&lon='+result.longitude);
   xhr2.addEventListener('load', function(){
     var weatherResult = JSON.parse(xhr2.response);
+    setBackground(weatherResult.weather[0].id);
     var weather = document.getElementsByClassName('weather')[0];
     weather.innerHTML = weatherResult.weather[0].description;
   });
@@ -32,6 +33,7 @@ xhr.addEventListener('load', function(){
     req.open('get', 'http://api.openweathermap.org/data/2.5/weather?q='+location);
     req.addEventListener('load', function(){
       var weatherResult = JSON.parse(req.response);
+      setBackground(weatherResult.weather[0].id);
       var weather = document.getElementsByClassName('weather')[0];
       weather.innerHTML = weatherResult.weather[0].description;
     });
@@ -40,3 +42,17 @@ xhr.addEventListener('load', function(){
 
 });
 xhr.send();
+
+var setBackground = function(code){
+  var background = document.getElementsByTagName('body')[0];
+  switch (code) {
+    case 800:
+      background.style.backgroundImage = 'url(\'images/cloudy.jpg\')';
+      break;
+    case 501:
+      background.style.backgroundImage = 'url(\'images/cloudy.jpg\')';
+      break;
+    default:
+      background.style.backgroundImage = 'url(\'images/rainbow.jpg\')';
+  }
+}
