@@ -3,7 +3,8 @@ xhr.open('get', 'http://www.telize.com/geoip?', true);
 xhr.addEventListener('load', function(){
 
   var req = new XMLHttpRequest;
-  req.open('get', 'http://api.openweathermap.org/data/2.5/weather?q=boulder,co', true);
+  var string = parseQueryString(document.location.search);
+  req.open('get', 'http://api.openweathermap.org/data/2.5/weather?q='+string.location);
   req.addEventListener('load', function(){
     var weatherResult = JSON.parse(req.response);
     var weather = document.getElementsByClassName('weather')[0];

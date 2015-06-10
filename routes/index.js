@@ -3,8 +3,11 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
-  res.render('index', { title: 'WeatherNow', weather: { description: "Sunny"}, ipAddress: '10.0.0.1' });
+  var userInput = req.query.location;
+  console.log(req.query.location);
+  res.render('index', { title: 'WeatherNow', location: userInput });
 });
+
+
 
 module.exports = router;
