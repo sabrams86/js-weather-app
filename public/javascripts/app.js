@@ -45,14 +45,17 @@ xhr.send();
 
 var setBackground = function(code){
   var background = document.getElementsByTagName('body')[0];
-  switch (code) {
-    case 800:
+    if (code < 300){
+      background.style.backgroundImage = 'url(\'images/thunderstorm.jpg\')';
+    } else if (code < 600){
+      background.style.backgroundImage = 'url(\'images/rain.jpg\')';
+    } else if (code < 700){
+      background.style.backgroundImage = 'url(\'images/snow.jpg\')';
+    } else if (code < 802){
+      background.style.backgroundImage = 'url(\'images/sunny.jpg\')';
+    } else if (code < 900){
       background.style.backgroundImage = 'url(\'images/cloudy.jpg\')';
-      break;
-    case 501:
-      background.style.backgroundImage = 'url(\'images/cloudy.jpg\')';
-      break;
-    default:
-      background.style.backgroundImage = 'url(\'images/rainbow.jpg\')';
-  }
+    } else {
+      background.style.backgroundImage = 'url(\'images/sunny.jpg\')';
+    }
 }
